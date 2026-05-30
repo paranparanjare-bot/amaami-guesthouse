@@ -1,22 +1,23 @@
-# AmaAmi Guest House 🏡
+# Kos AmaAmi Banyuwangi 🏠
 
-Homestay nyaman dan terjangkau di pusat Kota Banyuwangi.
+**Ama Ami Stay** — Kos bulanan nyaman di Dusun Tegalyasan, Tegalarum, Sempu, Banyuwangi.
+
+🗓️ **Tersedia bulanan ya!**
 
 **Website:** https://paranparanjare-bot.github.io/amaami-guesthouse
+**Taplink:** https://taplink.cc/amaamikos
+**TikTok:** https://www.tiktok.com/@kos.amaami
 
-## Fasilitas
-- WiFi Gratis
-- AC
-- Kamar Mandi Dalam (Air Panas & Dingin)
-- Parkir Luas
-- Laundry
-- TV
+## Lokasi
+📍 Dusun Tegalyasan, Tegalarum, Kec. Sempu, Kab. Banyuwangi, Jawa Timur 68468
+🗺️ https://maps.app.goo.gl/LNHSNcyFY6Zzgk4Z8
 
 ## Kontak
-- **WhatsApp:** +62 895-4282-0700
-- **Email:** amaami.guesthouse@gmail.com
-- **Lokasi:** Banyuwangi, Jawa Timur
+- **WhatsApp Admin:** +62 877-0772-2756
+- **WhatsApp CS:** https://wa.me/message/JAFQSGUCKIHOG1
+- **TikTok:** @kos.amaami
+- **Taplink:** https://taplink.cc/amaamikos
 
 ---
 
-© 2025 AmaAmi Guest House
+© 2025 Kos AmaAmi Banyuwangi
