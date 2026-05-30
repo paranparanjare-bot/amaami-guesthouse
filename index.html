@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmaAmi Guest House - Homestay Nyaman di Banyuwangi</title>
+    <meta name="description" content="AmaAmi Guest House Banyuwangi - Penginapan nyaman dan terjangkau di pusat kota Banyuwangi. Cocok untuk liburan, bisnis, dan keluarga.">
+    <meta name="keywords" content="guest house banyuwangi, homestay banyuwangi, penginapan murah banyuwangi, amaami guest house">
+    <meta property="og:title" content="AmaAmi Guest House - Homestay Nyaman di Banyuwangi">
+    <meta property="og:description" content="Penginapan nyaman dan terjangkau di pusat kota Banyuwangi">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://paranparanjare-bot.github.io/amaami-guesthouse">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background: #f8fafc;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #2d5a87 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.03) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .tagline {
+            font-size: 1.1rem;
+            opacity: 0.75;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .wa-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 14px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .wa-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        .hero .wa-btn::before {
+            content: '💬 ';
+        }
+
+        /* Sections */
+        section { padding: 70px 0; }
+        section:nth-child(even) { background: white; }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            color: #0f172a;
+        }
+        .section-title span {
+            display: inline-block;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2d5a87;
+        }
+
+        /* About */
+        .about-grid {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        .about-text { flex: 1; }
+        .about-text p { margin-bottom: 15px; font-size: 1.05rem; color: #475569; }
+        .about-highlights {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .highlight-card {
+            background: #f1f5f9;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .highlight-card:hover { transform: translateY(-3px); }
+        .highlight-card .icon { font-size: 2rem; margin-bottom: 8px; }
+        .highlight-card h3 { font-size: 1rem; color: #0f172a; }
+
+        /* Fasilitas */
+        .fasilitas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        .fasilitas-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .fasilitas-card:hover {
+            border-color: #2d5a87;
+            box-shadow: 0 4px 15px rgba(45, 90, 135, 0.1);
+        }
+        .fasilitas-card .icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .fasilitas-card h3 { margin-bottom: 8px; color: #0f172a; }
+        .fasilitas-card p { color: #64748b; font-size: 0.95rem; }
+
+        /* Lokasi */
+        .lokasi-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .lokasi-content p { font-size: 1.05rem; color: #475569; margin-bottom: 25px; }
+        .lokasi-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .lokasi-item { text-align: center; }
+        .lokasi-item .icon { font-size: 1.8rem; }
+        .lokasi-item p { font-size: 0.95rem; margin-top: 5px; }
+
+        /* Kontak */
+        .kontak-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .kontak-card {
+            background: #f1f5f9;
+            padding: 30px 40px;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 250px;
+        }
+        .kontak-card .icon { font-size: 2rem; margin-bottom: 10px; }
+        .kontak-card h3 { margin-bottom: 8px; color: #0f172a; }
+        .kontak-card a {
+            color: #2d5a87;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .kontak-card a:hover { text-decoration: underline; }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+        footer a { color: #60a5fa; text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding: 70px 0 50px; }
+            .hero h1 { font-size: 2rem; }
+            .about-grid { flex-direction: column; }
+            .about-highlights { grid-template-columns: 1fr 1fr; }
+            .section-title { font-size: 1.6rem; margin-bottom: 35px; }
+            section { padding: 50px 0; }
+        }
+        @media (max-width: 480px) {
+            .about-highlights { grid-template-columns: 1fr; }
+            .fasilitas-grid { grid-template-columns: 1fr; }
+            .hero .wa-btn { display: block; margin: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>AmaAmi Guest House</h1>
+        <p class="subtitle">🏡 Homestay Nyaman di Banyuwangi</p>
+        <p class="tagline">Penginapan bersih, nyaman, dan terjangkau — pusat kota, dekat semua destinasi</p>
+        <a class="wa-btn" href="https://wa.me/62895428200700?text=Halo%20AmaAmi%20Guest%20House%2C%20saya%20mau%20booking%20kamar" target="_blank">Pesan via WhatsApp</a>
+    </section>
+
+    <!-- TENTANG -->
+    <section>
+        <div class="container">
+            <h2 class="section-title"><span>Tentang AmaAmi</span></h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>AmaAmi Guest House adalah penginapan nyaman yang terletak di jantung Kota Banyuwangi. Kami menawarkan akomodasi bersih dan terjangkau bagi wisatawan, pebisnis, maupun keluarga yang ingin menikmati keindahan Banyuwangi.</p>
+                    <p>Dengan lokasi strategis, Anda mudah mengakses berbagai destinasi wisata seperti Kawah Ijen, Pulau Merah, Pantai Boom, dan Baluran. Dilengkapi fasilitas lengkap untuk masa menginap yang menyenangkan.</p>
+                </div>
+                <div class="about-highlights">
+                    <div class="highlight-card">
+                        <div class="icon">📍</div>
+                        <h3>Pusat Kota</h3>
+                        <p style="color:#64748b;font-size:0.85rem;margin-top:5px;">Mudah akses ke mana-mana</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="icon">🛏️</div>
+                        <h3>Kamar Bersih</h3>
+                        <p style="color:#64748b;font-size:0.85rem;margin-top:5px;">Dirawat setiap hari</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="icon">💵</div>
+                        <h3>Harga Terjangkau</h3>
+                        <p style="color:#64748b;font-size:0.85rem;margin-top:5px;">Ramah di kantong</p>
+                    </div>
+                    <div class="highlight-card">
+                        <div class="icon">🛜</div>
+                        <h3>WiFi Cepat</h3>
+                        <p style="color:#64748b;font-size:0.85rem;margin-top:5px;">Free untuk tamu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FASILITAS -->
+    <section style="background:white;">
+        <div class="container">
+            <h2 class="section-title"><span>Fasilitas</span></h2>
+            <div class="fasilitas-grid">
+                <div class="fasilitas-card">
+                    <div class="icon">🛜</div>
+                    <h3>WiFi Gratis</h3>
+                    <p>Akses internet cepat untuk seluruh tamu</p>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="icon">❄️</div>
+                    <h3>AC</h3>
+                    <p>Pendingin ruangan di setiap kamar</p>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="icon">🚿</div>
+                    <h3>Kamar Mandi Dalam</h3>
+                    <p>Air panas & dingin 24 jam</p>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="icon">🅿️</div>
+                    <h3>Parkir Luas</h3>
+                    <p>Area parkir aman untuk motor & mobil</p>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="icon">🧺</div>
+                    <h3>Laundry</h3>
+                    <p>Layanan laundry dengan biaya murah</p>
+                </div>
+                <div class="fasilitas-card">
+                    <div class="icon">📺</div>
+                    <h3>TV</h3>
+                    <p>TV saluran lokal di setiap kamar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOKASI -->
+    <section>
+        <div class="container">
+            <h2 class="section-title"><span>Lokasi Strategis</span></h2>
+            <div class="lokasi-content">
+                <p>Berada di pusat Kota Banyuwangi, AmaAmi Guest House dekat dengan berbagai tempat penting dan destinasi wisata.</p>
+                <div class="lokasi-details">
+                    <div class="lokasi-item">
+                        <div class="icon">🏛️</div>
+                        <p>Pusat Kota<br><small style="color:#94a3b8;">5 menit</small></p>
+                    </div>
+                    <div class="lokasi-item">
+                        <div class="icon">🚂</div>
+                        <p>Stasiun Banyuwangi<br><small style="color:#94a3b8;">10 menit</small></p>
+                    </div>
+                    <div class="lokasi-item">
+                        <div class="icon">⛵</div>
+                        <p>Pelabuhan Ketapang<br><small style="color:#94a3b8;">15 menit</small></p>
+                    </div>
+                    <div class="lokasi-item">
+                        <div class="icon">🏖️</div>
+                        <p>Pantai Boom<br><small style="color:#94a3b8;">10 menit</small></p>
+                    </div>
+                    <div class="lokasi-item">
+                        <div class="icon">⛰️</div>
+                        <p>Kawah Ijen<br><small style="color:#94a3b8;">1,5 jam</small></p>
+                    </div>
+                    <div class="lokasi-item">
+                        <div class="icon">🦒</div>
+                        <p>Baluran<br><small style="color:#94a3b8;">1 jam</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section style="background:white;">
+        <div class="container">
+            <h2 class="section-title"><span>Hubungi Kami</span></h2>
+            <div class="kontak-grid">
+                <div class="kontak-card">
+                    <div class="icon">💬</div>
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/62895428200700" target="_blank">+62 895-4282-0700</a>
+                </div>
+                <div class="kontak-card">
+                    <div class="icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:amaami.guesthouse@gmail.com">amaami.guesthouse@gmail.com</a>
+                </div>
+                <div class="kontak-card">
+                    <div class="icon">📍</div>
+                    <h3>Alamat</h3>
+                    <p style="color:#475569;font-size:0.9rem;">Banyuwangi, Jawa Timur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AmaAmi Guest House Banyuwangi</p>
+            <p style="margin-top:5px;">Dibuat dengan ❤️ untuk tamu istimewa</p>
+        </div>
+    </footer>
+
+</body>
+</html>
