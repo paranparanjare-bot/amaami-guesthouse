@@ -115,53 +115,23 @@
             z-index: 1;
         }
 
-        /* ── Logo (kiri atas, bulatan putih) ── */
-        .hero-logo {
-            position: absolute;
-            top: 28px;
-            left: 28px;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: contain;
-            padding: 12px;
-            background: rgba(255,255,255,0.9);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            opacity: 0;
-            animation: fadeIn 0.9s ease forwards;
-        }
-
-        /* ── Hero Top: judul + sub judul (hitam) ── */
-        .hero-top {
+        /* ── Banner (menggantikan logo + judul + sub) ── */
+        .hero-banner {
             width: 100%;
-            max-width: 700px;
-            text-align: center;
-            padding-top: 20px;
+            max-width: 800px;
+            height: auto;
+            display: block;
+            margin-top: 20px;
             opacity: 0;
-            animation: fadeUp 0.9s ease 0.15s forwards;
-        }
-        .hero-top h1 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            font-size: 3rem;
-            letter-spacing: -0.02em;
-            color: #000;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-        .hero-top .sub {
-            font-size: 1.1rem;
-            color: #000;
-            font-weight: 400;
-            font-family: 'Inter', sans-serif;
+            animation: fadeIn 0.9s ease 0.15s forwards;
         }
 
-        /* ── Running Teks (hitam) ── */
+        /* ── Running Teks (hitam, di bawah banner) ── */
         .running-text-wrap {
             width: 100%;
-            max-width: 700px;
+            max-width: 800px;
             overflow: hidden;
-            margin-top: 10px;
+            margin-top: 16px;
             opacity: 0;
             animation: fadeUp 0.9s ease 0.3s forwards;
         }
@@ -418,8 +388,6 @@
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
-            .hero-top h1 { font-size: 2rem; }
-            .hero-logo { width: 80px; height: 80px; top: 16px; left: 16px; padding: 8px; }
             section { padding: 72px 0; }
             .features { grid-template-columns: 1fr; }
             .section-title { font-size: 1.6rem; }
@@ -440,12 +408,7 @@
 
     <!-- Hero -->
     <section class="hero">
-        <img class="hero-logo" src="assets/logo.jpg" alt="Ama Ami Stay">
-
-        <div class="hero-top">
-            <h1>Ama Ami Stay</h1>
-            <p class="sub">Kost Bulanan &mdash; Banyuwangi</p>
-        </div>
+        <img class="hero-banner" src="assets/banner.png" alt="Ama Ami Stay">
 
         <div class="running-text-wrap">
             <div class="running-text">
