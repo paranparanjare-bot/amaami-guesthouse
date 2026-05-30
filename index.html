@@ -98,6 +98,18 @@
             overflow: hidden;
             background: linear-gradient(180deg, #fff 0%, #f0ebf3 100%);
         }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('assets/hero-bg.jpg') center center / cover no-repeat;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+            z-index: 0;
+        }
+        .hero.loaded::before {
+            opacity: 1;
+        }
         .hero > * {
             position: relative;
             z-index: 1;
@@ -553,6 +565,12 @@
     </footer>
 
     <script>
+        // Hero background load
+        const hero = document.querySelector('.hero');
+        const bgImg = new Image();
+        bgImg.onload = () => hero.classList.add('loaded');
+        bgImg.src = 'assets/hero-bg.jpg';
+
         // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => {
