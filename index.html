@@ -102,13 +102,30 @@
             padding: 40px 28px;
             background: linear-gradient(180deg, #fff 0%, #faf8fb 100%);
             position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('assets/hero-bg.jpg') center center / cover no-repeat;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+            z-index: 0;
+        }
+        .hero.loaded::before {
+            opacity: 0.45;
+        }
+        .hero > * {
+            position: relative;
+            z-index: 1;
         }
         .hero-avatar {
             width: 100px; height: 100px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 28px;
-            box-shadow: 0 4px 24px rgba(116, 70, 150, 0.12);
+            box-shadow: 0 4px 24px rgba(116, 70, 150, 0.2);
             opacity: 0;
             animation: fadeUp 0.9s ease forwards;
         }
@@ -498,6 +515,13 @@
     </footer>
 
     <script>
+        // Hero background load
+        const hero = document.querySelector('.hero');
+        const bgImg = new Image();
+        bgImg.onload = () => hero.classList.add('loaded');
+        bgImg.src = 'assets/hero-bg.jpg';
+
+        // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) e.target.classList.add('visible');
