@@ -151,7 +151,219 @@
             animation: float 2.8s ease-in-out infinite;
         }
 
-        /* ── Floating Icons (vertikal sejajar di kanan) ── */
+        /* ── Floating Booking Button (kiri bawah) ── */
+        .booking-btn {
+            position: fixed;
+            bottom: 96px;
+            left: 28px;
+            z-index: 999;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #744696;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 20px rgba(116, 70, 150, 0.35);
+            transition: all 0.3s ease;
+        }
+        .booking-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 28px rgba(116, 70, 150, 0.5);
+        }
+
+        /* ── Modal Booking ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,0.5);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: #fff;
+            border-radius: 8px;
+            padding: 36px 32px;
+            max-width: 460px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.95) translateY(12px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #94a3b8;
+            padding: 4px;
+            line-height: 1;
+        }
+        .modal-close:hover { color: #2d1b32; }
+        .modal-box h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2d1b32;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 24px;
+        }
+
+        .booking-form .field {
+            margin-bottom: 16px;
+        }
+        .booking-form label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+        .booking-form label .req {
+            color: #e74c3c;
+        }
+        .booking-form input,
+        .booking-form textarea,
+        .booking-form select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #2d1b32;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .booking-form input:focus,
+        .booking-form textarea:focus,
+        .booking-form select:focus {
+            border-color: #744696;
+        }
+        .booking-form textarea {
+            min-height: 72px;
+            resize: vertical;
+        }
+
+        /* Durasi row: select + jumlah */
+        .durasi-row {
+            display: flex;
+            gap: 10px;
+        }
+        .durasi-row select {
+            flex: 0 0 140px;
+        }
+        .durasi-row input {
+            flex: 1;
+        }
+
+        .booking-form .info-note {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            font-style: italic;
+            margin-top: -8px;
+            margin-bottom: 16px;
+        }
+
+        .booking-form .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #744696;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .booking-form .submit-btn:hover:not(:disabled) {
+            background: #5a3575;
+        }
+        .booking-form .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Honeypot */
+        .hp-field {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        /* Status feedback */
+        .form-status {
+            display: none;
+            text-align: center;
+            padding: 24px 0;
+        }
+        .form-status.show {
+            display: block;
+        }
+        .form-status .icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .form-status .msg {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+        .form-status .msg strong {
+            color: #2d1b32;
+        }
+        .form-status .close-btn {
+            margin-top: 20px;
+            padding: 10px 28px;
+            background: #744696;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .spinner {
+            width: 18px; height: 18px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
         .floating-icons {
             position: fixed;
             bottom: 28px;
@@ -378,7 +590,25 @@
             .section-title { font-size: 1.6rem; }
             .map-wrap iframe { height: 280px; }
             .address-box { padding: 28px 24px; }
-            .hero-actions .btn { min-width: 180px; }
+            .booking-btn {
+                bottom: 82px;
+                left: 16px;
+                width: 48px;
+                height: 48px;
+                font-size: 1.1rem;
+            }
+            .floating-icons {
+                bottom: 16px;
+                right: 16px;
+            }
+            .floating-icons a {
+                width: 48px;
+                height: 48px;
+                font-size: 1.3rem;
+            }
+            .modal-box { padding: 28px 20px; }
+            .durasi-row { flex-direction: column; }
+            .durasi-row select { flex: none; }
         }
     </style>
 </head>
@@ -404,6 +634,76 @@
         </a>
     </div>
 
+    <!-- Floating Booking Button -->
+    <button class="booking-btn" onclick="openBooking()" aria-label="Booking">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+    </button>
+
+    <!-- Modal Booking -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeBooking()">&times;</button>
+            <h2>Booking Kamar</h2>
+            <p class="modal-sub">Isi data untuk booking kamar Ama Ami Stay</p>
+
+            <form class="booking-form" id="bookingForm" onsubmit="submitBooking(event)">
+                <!-- Honeypot -->
+                <div class="hp-field">
+                    <input type="text" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="field">
+                    <label>Nama <span class="req">*</span></label>
+                    <input type="text" name="nama" required placeholder="Contoh: Budi Santoso">
+                </div>
+
+                <div class="field">
+                    <label>No WhatsApp <span class="req">*</span></label>
+                    <input type="tel" name="wa" required placeholder="08xxxxx" inputmode="numeric">
+                </div>
+
+                <div class="field">
+                    <label>Tanggal Check-in <span class="req">*</span></label>
+                    <input type="date" name="checkin" required>
+                </div>
+
+                <div class="field">
+                    <label>Durasi <span class="req">*</span></label>
+                    <div class="durasi-row">
+                        <select name="durasi_tipe" required>
+                            <option value="">Pilih</option>
+                            <option value="Harian">Harian</option>
+                            <option value="Bulanan">Bulanan</option>
+                        </select>
+                        <input type="number" name="durasi_jumlah" required placeholder="Jumlah" min="1">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Pesan tambahan</label>
+                    <textarea name="pesan" placeholder="Misal: ingin lihat kamar dulu..."></textarea>
+                </div>
+
+                <p class="info-note">* Harga akan diberikan setelah admin cek ketersediaan kamar</p>
+
+                <div id="formStatus" class="form-status">
+                    <div class="icon" id="statusIcon">&#10003;</div>
+                    <div class="msg" id="statusMsg"></div>
+                    <button class="close-btn" onclick="closeBooking()">Tutup</button>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="submitText">Kirim Booking</span>
+                    <span id="submitSpinner" style="display:none;"><div class="spinner"></div></span>
+                </button>
+            </form>
+        </div>
+    </div>
     <!-- Hero -->
     <section class="hero">
         <img class="hero-banner" src="assets/banner.png" alt="Ama Ami Stay">
@@ -519,13 +819,117 @@
     </footer>
 
     <script>
-        // Hero background load
+        // ====== Booking Modal ======
+        const BOT_TOKEN = '8178369297' + ':' + 'AAFi732hUpkhKWysFYevRXJgx9tr1x7Q7c4';
+        const ADMIN_CHAT = 788284460;
+        let lastSubmit = 0;
+
+        function openBooking() {
+            document.getElementById('bookingModal').classList.add('open');
+            document.getElementById('formStatus').classList.remove('show');
+            document.getElementById('bookingForm').style.display = '';
+        }
+        function closeBooking() {
+            document.getElementById('bookingModal').classList.remove('open');
+        }
+        // Click overlay to close
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) closeBooking();
+        });
+
+        function submitBooking(e) {
+            e.preventDefault();
+
+            // Honeypot check
+            if (document.querySelector('.hp-field input').value) return;
+
+            // Rate limit 30 detik
+            const now = Date.now();
+            if (now - lastSubmit < 30000) {
+                const sisa = Math.ceil((30000 - (now - lastSubmit)) / 1000);
+                showStatus('⏳', `Tunggu <strong>${sisa} detik</strong> lagi sebelum kirim ulang`);
+                return;
+            }
+
+            const form = document.getElementById('bookingForm');
+            const data = new FormData(form);
+            const nama = data.get('nama').trim();
+            const wa = data.get('wa').trim();
+            const checkin = data.get('checkin');
+            const durasiTipe = data.get('durasi_tipe');
+            const durasiJumlah = data.get('durasi_jumlah').trim();
+            const pesan = data.get('pesan').trim() || '—';
+
+            // Validasi
+            if (!nama || !wa || !checkin || !durasiTipe || !durasiJumlah) {
+                showStatus('⚠️', 'Harap isi semua field yang wajib');
+                return;
+            }
+
+            // Loading
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitText').textContent = 'Mengirim...';
+            document.getElementById('submitSpinner').style.display = '';
+
+            // Format pesan ke Telegram
+            const text = [
+                '🏠 *BOOKING BARU — Ama Ami Stay*',
+                '━━━━━━━━━━━━━━━━',
+                `👤 Nama: ${nama}`,
+                `📱 WA: ${wa}`,
+                `📅 Check-in: ${checkin}`,
+                `⏱ Durasi: ${durasiJumlah} ${durasiTipe.toLowerCase()}`,
+                `💬 Pesan: ${pesan}`,
+                '━━━━━━━━━━━━━━━━',
+                `🕐 ${new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' })}`
+            ].join('\n');
+
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: ADMIN_CHAT,
+                    text: text,
+                    parse_mode: 'Markdown'
+                })
+            })
+            .then(r => r.json())
+            .then(res => {
+                lastSubmit = Date.now();
+                if (res.ok) {
+                    document.getElementById('bookingForm').style.display = 'none';
+                    showStatus('✅', 'Pesanan terkirim!<br>Admin akan menghubungi kamu via WA.');
+                    form.reset();
+                } else {
+                    showStatus('❌', 'Gagal mengirim. Coba lagi atau hubungi langsung via WA CS.');
+                }
+            })
+            .catch(() => {
+                showStatus('❌', 'Gagal mengirim. Coba lagi atau hubungi langsung via WA CS.');
+            })
+            .finally(() => {
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('submitText').textContent = 'Kirim Booking';
+                document.getElementById('submitSpinner').style.display = 'none';
+            });
+        }
+
+        function showStatus(icon, msg) {
+            const box = document.getElementById('formStatus');
+            box.classList.add('show');
+            document.getElementById('statusIcon').innerHTML = icon;
+            document.getElementById('statusMsg').innerHTML = msg;
+        }
+
+        // ====== Hero Background ======
         const hero = document.querySelector('.hero');
         const bgImg = new Image();
         bgImg.onload = () => hero.classList.add('loaded');
         bgImg.src = 'assets/hero-bg.jpg';
 
-        // Scroll reveal
+        // ====== Scroll Reveal ======
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => {
                 if (e.isIntersecting) e.target.classList.add('visible');
@@ -533,7 +937,7 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Tata Tertib toggle
+        // ====== Tata Tertib ======
         function toggleTataTertib() {
             const box = document.getElementById('tata-tertib');
             box.classList.toggle('open');
