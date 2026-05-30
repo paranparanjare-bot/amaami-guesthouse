@@ -154,26 +154,38 @@
         /* ── Floating Booking Button (kiri bawah) ── */
         .booking-btn {
             position: fixed;
-            bottom: 96px;
+            bottom: 28px;
             left: 28px;
             z-index: 999;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
+            width: 48px;
+            height: 192px;
+            border-radius: 10px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 8px;
             background: #744696;
             color: #fff;
             border: none;
             cursor: pointer;
-            font-size: 1.3rem;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
             box-shadow: 0 4px 20px rgba(116, 70, 150, 0.35);
             transition: all 0.3s ease;
         }
         .booking-btn:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 6px 28px rgba(116, 70, 150, 0.5);
+        }
+        .booking-btn svg {
+            flex-shrink: 0;
+        }
+        .booking-btn .btn-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
         }
 
         /* ── Modal Booking ── */
@@ -591,11 +603,18 @@
             .map-wrap iframe { height: 280px; }
             .address-box { padding: 28px 24px; }
             .booking-btn {
-                bottom: 82px;
+                bottom: 16px;
                 left: 16px;
-                width: 48px;
-                height: 48px;
-                font-size: 1.1rem;
+                width: 40px;
+                height: 160px;
+                border-radius: 8px;
+                font-size: 0.75rem;
+                letter-spacing: 2px;
+                gap: 6px;
+            }
+            .booking-btn svg {
+                width: 18px;
+                height: 18px;
             }
             .floating-icons {
                 bottom: 16px;
@@ -641,8 +660,9 @@
             <line x1="16" y1="2" x2="16" y2="6"/>
             <line x1="8" y1="2" x2="8" y2="6"/>
             <line x1="3" y1="10" x2="21" y2="10"/>
-        </svg>
-    </button>
+            </svg>
+            <span class="btn-label">RESERVASI</span>
+            </button>
 
     <!-- Modal Booking -->
     <div class="modal-overlay" id="bookingModal">
@@ -900,7 +920,7 @@
                 lastSubmit = Date.now();
                 if (res.ok) {
                     document.getElementById('bookingForm').style.display = 'none';
-                    showStatus('✅', 'Pesanan terkirim!<br>Admin akan menghubungi kamu via WA.');
+                    showStatus('✅', 'Data pesanan telah terkirim, anda akan dihubungi admin untuk konfirmasi ulang, terimakasih');
                     form.reset();
                 } else {
                     showStatus('❌', 'Gagal mengirim. Coba lagi atau hubungi langsung via WA CS.');
