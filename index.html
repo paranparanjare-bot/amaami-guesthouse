@@ -851,9 +851,13 @@
         let lastSubmit = 0;
 
         function openBooking() {
-            document.getElementById('bookingModal').classList.add('open');
+            const modal = document.getElementById('bookingModal');
+            modal.classList.add('open');
             document.getElementById('formStatus').classList.remove('show');
             document.getElementById('bookingForm').style.display = '';
+            document.querySelector('.modal-box h2').style.display = '';
+            document.querySelector('.modal-box .modal-sub').style.display = '';
+            document.getElementById('bookingForm').reset();
         }
         function closeBooking() {
             document.getElementById('bookingModal').classList.remove('open');
@@ -926,6 +930,8 @@
                 lastSubmit = Date.now();
                 if (res.ok) {
                     document.getElementById('bookingForm').style.display = 'none';
+                    document.querySelector('.modal-box h2').style.display = 'none';
+                    document.querySelector('.modal-box .modal-sub').style.display = 'none';
                     showStatus('✅', 'RESERVASI TERKIRIM', 'Data pesanan telah terkirim, anda akan dihubungi admin untuk konfirmasi ulang, terimakasih');
                     form.reset();
                 } else {
