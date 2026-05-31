@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Digital Creative Prototype</title>
+    
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Swiper CSS untuk Carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #000000;
+            --bg-secondary: #111111;
+            --gold: #D4AF37;
+            --gold-dim: #AA8C2C;
+            --red-accent: #C41E3A;
+            --text-light: #F0F0F0;
+            --text-dim: #A0A0A0;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-light);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* 1. BANNER (Rasio 1:5) */
+        .banner-container {
+            width: 100%;
+            padding-top: 20%; 
+            position: relative;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            border-bottom: 2px solid var(--gold-dim);
+            overflow: hidden;
+        }
+
+        .banner-content {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .banner-title {
+            font-family: var(--font-heading);
+            color: var(--gold);
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .banner-subtitle {
+            color: var(--text-dim);
+            font-size: clamp(0.7rem, 2.5vw, 1rem);
+            letter-spacing: 5px;
+            margin-top: 5px;
+            text-transform: lowercase;
+        }
+
+        /* 2. QUICK LINKS ICON */
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px 15px;
+            margin-top: 5px;
+        }
+
+        .ql-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background-color: var(--bg-secondary);
+            border: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .ql-icon:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        /* 3. CAROUSEL SECTION */
+        .carousel-section {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px 0 30px 0;
+            position: relative;
+        }
+
+        .swiper {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .swiper-slide {
+            width: 240px; 
+            aspect-ratio: 3 / 4;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background-color: #222;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .slide-1 { background: linear-gradient(160deg, #2a0845 0%, #111 100%); border: 1px solid #4a1c6a; }
+        .slide-2 { background: linear-gradient(160deg, #4b1212 0%, #111 100%); border: 1px solid var(--red-accent); }
+        .slide-3 { background: linear-gradient(160deg, #1b2610 0%, #111 100%); border: 1px solid #3c5421; }
+        .slide-4 { background: linear-gradient(160deg, #0f2027 0%, #111 100%); border: 1px solid #1a3a47; }
+        .slide-5 { background: linear-gradient(160deg, #332000 0%, #111 100%); border: 1px solid var(--gold-dim); }
+
+        .slide-content {
+            padding: 25px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(255,255,255,0.2);
+        }
+
+        .card-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-btn {
+            margin-top: auto;
+            width: 100%;
+            background-color: transparent;
+            border: 1px solid var(--gold-dim);
+            color: var(--gold);
+            padding: 12px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 10;
+        }
+
+        .swiper-slide-active .card-btn {
+            background-color: var(--red-accent);
+            border-color: var(--red-accent);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(196, 30, 58, 0.4);
+        }
+
+        /* 4. NAVIGASI DI BAWAH CAROUSEL */
+        .nav-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-top: 10px;
+            padding-bottom: 20px;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            border: 1px solid #333;
+            color: var(--gold-dim);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:active, .nav-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background-color: #222;
+        }
+
+        /* 5. FOOTER & KONTAK */
+        .footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid #222;
+            padding: 25px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .contact-row {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .contact-item i {
+            color: var(--red-accent);
+            font-size: 1.1rem;
+        }
+
+        .contact-item:hover {
+            color: var(--text-light);
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            color: #555;
+            letter-spacing: 1px;
+        }
+
+        /* 6. MODAL / POPUP */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background-color: #1a1a1a;
+            border: 1px solid var(--gold-dim);
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+            padding: 25px;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            font-family: var(--font-heading);
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            padding-right: 20px;
+        }
+
+        .modal-body {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. BANNER -->
+    <header class="banner-container">
+        <div class="banner-content">
+            <h1 class="banner-title">DIGITAL CREATIVE</h1>
+            <p class="banner-subtitle">e k o s e t y o b u d i</p>
+        </div>
+    </header>
+
+    <!-- 2. QUICK LINKS -->
+    <nav class="quick-links">
+        <a href="#" class="ql-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></a>
+        <a href="#" class="ql-icon"><i class="fa-solid fa-robot"></i></a>
+        <a href="#" class="ql-icon"><i class="fa-brands fa-discord"></i></a>
+        <a href="#" class="ql-icon"><i class="fa-solid fa-terminal"></i></a>
+    </nav>
+
+    <!-- 3. CAROUSEL -->
+    <main class="carousel-section">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                
+                <!-- CARD 1 -->
+                <div class="swiper-slide slide-1" onclick="openModal('Image Generator', 'Platform AI super pintar untuk menghasilkan gambar berkualitas tinggi dari teks. Dilengkapi dengan berbagai style mulai dari anime, photorealistic, hingga 3D render. Ditenagai oleh model terbaru yang dihosting via Cloudflare.')">
+                    <div class="slide-content">
+                        <i class="fa-regular fa-image card-icon"></i>
+                        <h2 class="card-title">Image Generator</h2>
+                        <p class="card-desc">Ciptakan karya visual memukau hanya dengan mengetik prompt. Mendukung berbagai style render.</p>
+                        <a href="#" class="card-btn" onclick="event.stopPropagation()">Masuk</a>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="swiper-slide slide-2" onclick="openModal('Video AI Maker', 'Ubah teks atau gambar diam menjadi video animasi yang hidup. Sangat cocok untuk konten kreator yang butuh transisi halus dan efek sinematik tanpa perlu rendering berat di komputer sendiri.')">
+                    <div class="slide-content">
+                        <i class="fa-solid fa-video card-icon"></i>
+                        <h2 class="card-title">Video AI Maker</h2>
+                        <p class="card-desc">Ubah teks atau gambar menjadi animasi video sinematik dengan cepat.</p>
+                        <a href="#" class="card-btn" onclick="event.stopPropagation()">Masuk</a>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="swiper-slide slide-3" onclick="openModal('Shopee Affiliate Hub', 'Dashboard khusus untuk mengelola link affiliasi, memantau klik, dan menggenerate banner promosi secara otomatis untuk di-share ke media sosial.')">
+                    <div class="slide-content">
+                        <i class="fa-solid fa-bag-shopping card-icon"></i>
+                        <h2 class="card-title">Shopee Affiliate</h2>
+                        <p class="card-desc">Kelola link promosi dan pantau performa affiliate dengan mudah.</p>
+                        <a href="#" class="card-btn" onclick="event.stopPropagation()">Masuk</a>
+                    </div>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="swiper-slide slide-4" onclick="openModal('Audio & Music', 'Buat jingle, sound effect, atau musik background untuk video YouTube dan TikTok tanpa takut terkena copyright strike.')">
+                    <div class="slide-content">
+                        <i class="fa-solid fa-music card-icon"></i>
+                        <h2 class="card-title">Audio & Music</h2>
+                        <p class="card-desc">Hasilkan musik bebas hak cipta untuk kebutuhan konten digitalmu.</p>
+                        <a href="#" class="card-btn" onclick="event.stopPropagation()">Masuk</a>
+                    </div>
+                </div>
+
+                <!-- CARD 5 -->
+                <div class="swiper-slide slide-5" onclick="openModal('Web Dashboard', 'Akses ke berbagai modul rahasia dan tool admin untuk memanajemen seluruh ekosistem bot dan layanan digital.')">
+                    <div class="slide-content">
+                        <i class="fa-solid fa-globe card-icon"></i>
+                        <h2 class="card-title">Web Dashboard</h2>
+                        <p class="card-desc">Akses cepat ke panel kontrol dan statistik traffic website.</p>
+                        <a href="#" class="card-btn" onclick="event.stopPropagation()">Masuk</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 4. NAVIGASI -->
+        <div class="nav-controls">
+            <div class="nav-btn swiper-button-prev-custom"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="nav-btn swiper-button-next-custom"><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    </main>
+
+    <!-- 5. FOOTER -->
+    <footer class="footer">
+        <div class="contact-row">
+            <a href="mailto:betutubr@gmail.com" class="contact-item">
+                <i class="fa-solid fa-envelope"></i> betutubr@gmail.com
+            </a>
+            <a href="https://wa.me/6285111507890" target="_blank" class="contact-item">
+                <i class="fa-brands fa-whatsapp"></i> +62 851-1150-7890
+            </a>
+            <a href="https://t.me/echoezbe" target="_blank" class="contact-item">
+                <i class="fa-brands fa-telegram"></i> @echoezbe
+            </a>
+        </div>
+        <p class="copyright">© 2026 DIGITAL CREATIVE. All Rights Reserved.</p>
+    </footer>
+
+    <!-- 6. MODAL POPUP -->
+    <div class="modal-overlay" id="infoModal" onclick="closeModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <i class="fa-solid fa-xmark modal-close" onclick="closeModal(event)"></i>
+            <h3 class="modal-title" id="modalTitle">Judul</h3>
+            <p class="modal-body" id="modalBody">Deskripsi lengkap akan muncul di sini.</p>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Inisialisasi Script -->
+    <script>
+        const swiper = new Swiper('.mySwiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            loop: true,
+            autoplay: {
+                delay: 10000,
+                disableOnInteraction: false, 
+            },
+            coverflowEffect: {
+                rotate: 0, 
+                stretch: 80, 
+                depth: 250, 
+                modifier: 1,
+                slideShadows: true, 
+            },
+            navigation: {
+                nextEl: '.swiper-button-next-custom',
+                prevEl: '.swiper-button-prev-custom',
+            },
+        });
+
+        const modal = document.getElementById('infoModal');
+        const mTitle = document.getElementById('modalTitle');
+        const mBody = document.getElementById('modalBody');
+
+        function openModal(title, desc) {
+            mTitle.innerText = title;
+            mBody.innerText = desc;
+            modal.classList.add('active');
+            swiper.autoplay.stop(); 
+        }
+
+        function closeModal(e) {
+            if(e) e.stopPropagation();
+            modal.classList.remove('active');
+            swiper.autoplay.start(); 
+        }
+    </script>
+
+</body>
+</html>
